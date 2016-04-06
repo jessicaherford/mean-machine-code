@@ -90,6 +90,51 @@ apiRouter.route('/users')
 			res.json(users);
 		});
 	});
+
+  apiRouter.route('/users/:user_id')
+  //get the user with that id
+  //(accessed at GET http://localhost:8080/api/users/:user_id)
+  .get(function(req,res){
+    User.findById(req.params.user_id, function(err, user){
+      if(err) res.send(err);
+      // return that user
+      res.json(user);
+    });
+  })
+  // update the user with this id
+  // (accessed at PUT http://localhost:8080/api/users/:user_id)
+  .put(function(req, res){
+    User.findById(req.params.user_id, function(err, user){
+
+      if (err) res.send(err);
+
+      // update the users info only if its new
+      if (req.body.name) user.name = req.body.name;
+      if (req.body.username) user.username = req.body.username;
+      if (req.body.password) user.password = req.body.password;
+
+      // save the user
+      user.save(function(err){
+        if(err) res.send(err);
+
+        // return a message
+        res.json({ message: 'User updated!'});
+      });
+
+    });
+
+  })
+
+  .delete(function(req,res){
+      User.remove({
+        _id: req.params.user_id
+      }, function(err, user){
+        if(err) return res.send(err);
+
+        res.json({message: 'Succesfully deleted'});
+      });
+  });
+
 //more routes for our API will happen here
 
 // REGISTER OUR ROUTES -------------------------------
