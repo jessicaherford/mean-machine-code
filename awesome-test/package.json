@@ -1,0 +1,23 @@
+{
+  "name": "mean-machine-code",
+  "version": "1.0.0",
+  "description": "The code repository for the book, MEAN Machine",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error no test specified\"  && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicaherford/mean-machine-code.git"
+  },
+  "author": "Jessica Herford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessicaherford/mean-machine-code/issues"
+  },
+  "homepage": "https://github.com/jessicaherford/mean-machine-code#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "file-system": "^2.2.1"
+  }
+}
